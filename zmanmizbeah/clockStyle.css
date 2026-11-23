@@ -1,0 +1,60 @@
+@font-face {
+  font-family: 'StamAshkenazCLM';
+  src: url('/fonts/StamAshkenazCLM.woff2') format('woff2'),
+       url('/fonts/StamAshkenazCLM.woff') format('woff'),
+       url('/fonts/StamAshkenazCLM.ttf') format('truetype');
+
+/*
+  font-family: 'ashurith';
+  src: url('/fonts/ashurith.woff2') format('woff2'),
+       url('/fonts/ashurith.woff') format('woff'),
+       url('/fonts/ashurith.ttf') format('truetype');
+*/
+
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+body {
+  background-color: black;
+}
+
+table, tr, td {
+  border: none;
+  padding: none;
+}
+
+.aBitOfSpace {
+  padding-left: 10px;
+}
+
+#canvas {
+  cursor: none; 
+}
+
+.controls {
+  padding: 20px;
+  text-align: center;
+  direction: rtl;
+}
+
+div {
+  padding: 5px;
+  color: aqua; 
+}
+
+#alarmStatus {
+  border: solid gold 1px;
+  text-align: right;
+  direction: rtl;
+}
+
+#shainfo {
+  margin: auto;
+  border: solid silver 2px;
+  width: 95%;
+  text-align: center;
+  direction: rtl;
+  color: gold;
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="test.xsl"?>
+<fonts>
+  <font name="Ashurith" file="ashurith.woff2"/>
+  <font name="בית יוסף" file="Beth_Yosef.woff2"/>  
+  <font name="Keter Aram Tsova" file="KeterAramTsova.woff2"/>
+  <font name="Keter YG" file="KeterYG-Medium.woff2"/>
+  <font name="Noto Rashi Hebrew" file="NotoRashiHebrew-Regular.woff2"/>
+  <font name="Shofar D" file="Shofar_D.woff2"/>
+  <font name="Stam Ashkenaz CLM" file="StamAshkenazCLM.woff2"/>
+  <font name="Stam Sefarad CLM" file="StamSefaradCLM.woff2"/>
+  <font name="Taamey Ashkenaz" file="TaameyAshkenaz-Medium.woff2"/>
+  <font name="Taamey David CLM" file="TaameyDavidCLM-Medium.woff2"/>
+  <font name="Taamey D" file="Taamey_D.woff2"/>
+</fonts>

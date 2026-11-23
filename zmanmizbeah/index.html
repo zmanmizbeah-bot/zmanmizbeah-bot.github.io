@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0 user-scalable=no">
+<meta Http-Equiv="Cache-Control" Content="no-cache">
+<meta Http-Equiv="Pragma" Content="no-cache">
+<meta Http-Equiv="Expires" Content="0">
+<meta Http-Equiv="Pragma-directive: no-cache">
+<meta Http-Equiv="Cache-directive: no-cache">
+  <title>זמן האמיתי - Halachic Clock</title>
+  <link id="style" rel="stylesheet" type="text/css" href="clockStyle.css" media="all">
+  <link rel="icon" type="image/x-icon" href="clock_ico.png" />
+</head>
+<body>
+<audio id="chime" autoplay>
+  <source src="gong.mp3" type="audio/mpeg">
+</audio>
+<table><tr><td id="canvasCell">
+<canvas id="canvas" width="900" height="900" style="background-color:black" onmouseover="hideControls(true);" onmouseout="hideControls(false);">
+Sorry, your browser does not support canvas.
+</canvas></td>
+<td id="controls" class="controls">
+<button onclick="hourlyChime();">ברוך הבא לזמן האמיתי</button>
+<div id="controlPanel" hidden>
+  <div id="eyzehZman">שימוש בזמן המזבח בירושלים</div>
+  <div id="shainfo" hidden></div>
+  <br>
+  <button onclick="setAlarmClock();">לכוון שעון מעורר</button>
+  <button onclick="setHourlyChimes(this);">להשבית בפעמוני השעה</button>
+  <button id="chooseLocalTime" onclick="getLocation();">השתמש בזמן מקומי</button>
+  <button id="chooseMizbeahTime" onclick="setMizbeah();">השתמש בזמן המזבח</button>  
+  <div id="alarmOptions" hidden>
+    <span id="alarmOps" onchange="setAlarmClock(1);">שעה
+      <input type="number" value="10.5" step="0.05" min="0" max="11.95" id="alarmTime" size="4"></input>
+      <input type="radio" value="בלילה" id="alarmLayla" checked name="alarmDayOrNight">
+        <label for="alarmLayla">בלילה</label>
+      </input>
+      <span class="aBitOfSpace"></span>
+      <input type="radio" value="ביום" id="alarmYom" name="alarmDayOrNight">
+        <label for="alarmYom">ביום</label>
+      </input>
+      <div>
+        <button id="setAlarmNow" hidden onclick="setAlarmClock(2);">לכוון שעון מעורר ל</button>
+      </div>
+      <div id="alarmStatus" hidden></div>
+    </span>
+  </div>
+  <div><button onclick="calcAndDisplayMetta(this);">לחשבן פרק מטה</button><span id="lst135"></span></div>
+</div>
+</td>
+</tr>
+<tr><td id="vertControlsHome" class="controls"></td></tr>
+</table>
+<script src="solarCalc.js"></script>
+<script src="sun.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="clockFunctions.js"></script>
+</body>
+</html>

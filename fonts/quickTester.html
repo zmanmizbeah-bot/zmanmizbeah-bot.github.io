@@ -1,0 +1,122 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Hebrew Dagesh Tester — Beth Yosef</title>
+<style>
+  @font-face{
+    font-family: "Beth_Yosef";
+    /* Replace the filename below with your exported OTF */
+    src: url("Beth_Yosef.woff2") format("woff2");
+    font-display: swap;
+  }
+
+  :root{
+    --size: 64px;
+    --line: 1.15;
+  }
+
+  body{
+    font-family: "Beth_Yosef";
+    padding: 18px;
+    background: #fff;
+    color: #111;
+  }
+
+  h1{ font-size: 20px; margin: 8px 0 16px; }
+  p.small{ font-size: 13px; color: #555; margin-top: 2px; }
+
+  .controls{ margin-bottom: 12px; }
+  .control label{ margin-right: 8px; font-size: 13px; }
+
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0,1fr));
+    gap: 8px;
+    align-items: center;
+  }
+
+  .cell{
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 10px;
+    text-align: center;
+    background: #fafafa;
+  }
+
+  .letter{
+    font-size: var(--size);
+    line-height: var(--line);
+    display:block;
+    margin-bottom:6px;
+  }
+  .label{ font-size:13px; color:#333 }
+
+  .examples{ margin-top:18px; display:block; }
+  .exampleLine{ font-size:36px; margin:10px 0; }
+
+  footer{ margin-top:24px; font-size:12px; color:#666 }
+</style>
+
+<h1>Hebrew Dagesh Tester — Beth Yosef</h1>
+<p class="small">If you have a local OTF, edit the <code>@font-face src</code> above. Open this file in Firefox for the most faithful HarfBuzz shaping.</p>
+
+<div class="controls">
+  <label>Font size: <input id="sizeRange" type="range" min="28" max="120" value="64"></label>
+  <label>Line height: <input id="lineRange" type="range" min="1" max="2" step="0.05" value="1.15"></label>
+</div>
+
+<div class="grid" id="grid">
+  <!-- Grid cells inserted by script -->
+</div>
+
+<section class="examples">
+  <h2>Common test words</h2>
+  <div class="exampleLine">אִשָּׁה — א + hiriq + shin+dagesh + holam</div>
+  <div class="exampleLine">וְאֶת־בָּתֵּינוּ הִצִּיל — the צ with dagesh example</div>
+  <div class="exampleLine">דָּג — ד + qamats + dagesh</div>
+  <div class="exampleLine">בִּרְכָּה — bet with dagesh in context</div>
+  <div class="exampleLine">אּבּגּדּהּוּזּחּטּיּכּךּמּםּנּןּסּעּּפּףּצּץּקּרּשּתּ</div>  
+</section>
+
+<footer>
+  Tip: if the browser blocks your local font, copy the OTF into the same folder and ensure the filename in @font-face matches exactly. Firefox handles file:// fonts well.
+</footer>
+
+<script>
+  // Hebrew base letters U+05D0 .. U+05EA
+  const start = 0x05D0;
+  const end   = 0x05EA;
+  const COMBINING_DAGESH = '\u05BC';
+
+  const grid = document.getElementById('grid');
+
+  for (let cp = start; cp <= end; cp++) {
+    const base = String.fromCodePoint(cp);
+    const combined = base + COMBINING_DAGESH;
+
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+
+    const letter = document.createElement('div');
+    letter.className = 'letter';
+    letter.textContent = combined;
+
+    const label = document.createElement('div');
+    label.className = 'label';
+    label.textContent = `${base} + dagesh (U+${cp.toString(16).toUpperCase()})`;
+
+    cell.appendChild(letter);
+    cell.appendChild(label);
+    grid.appendChild(cell);
+  }
+
+  // controls
+  const sizeRange = document.getElementById('sizeRange');
+  const lineRange = document.getElementById('lineRange');
+  sizeRange.addEventListener('input', e => {
+    document.documentElement.style.setProperty('--size', e.target.value + 'px');
+  });
+  lineRange.addEventListener('input', e => {
+    document.documentElement.style.setProperty('--line', e.target.value);
+  });
+</script>
+
